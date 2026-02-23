@@ -39,13 +39,13 @@ def predict():
         data = preprocess_data(data)
         X, y = prepare_features_target(data)
         
-        # Splitting and scaling the data
+        
         X_train, _, y_train, _ = train_test_split(X, y, test_size=0.2, shuffle=True, random_state=404)
         scaler = StandardScaler()
         scaler.fit(X_train)
         scaled_input = scaler.transform(X)
 
-        # Building and training the model
+        
         input_shape = (X_train.shape[1],)
         model = create_advanced_dl_model(input_shape)
         model.fit(scaler.transform(X_train), y_train, epochs=150, batch_size=64, verbose=1)
